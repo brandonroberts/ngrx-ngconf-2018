@@ -1,0 +1,1 @@
+ng generate module Auth --flat false

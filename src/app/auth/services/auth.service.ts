@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { UserModel } from '@app/auth/models/user.model';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { Authenticate } from '@app/auth/models/authentication.model';
+import { Authenticate } from '../models/authentication.model';
 
 @Injectable()
 export class AuthService {

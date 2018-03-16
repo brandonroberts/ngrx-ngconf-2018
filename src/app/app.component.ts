@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <mat-sidenav-container fullscreen>
-      <mat-sidenav mode="side" opened>Sidenav content</mat-sidenav>
+      <mat-sidenav></mat-sidenav>
       <mat-sidenav-content>
         <mat-toolbar color="primary">
           <span>NgRx Authentication</span>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
-import { map, exhaustMap, catchError, finalize } from 'rxjs/operators';
+import { map, exhaustMap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import {
   AuthActions,
@@ -39,7 +39,7 @@ export class AuthEffects {
           .logout()
           .pipe(
             map(() => new LogoutComplete()),
-            finalize(() => new LogoutComplete())
+            catchError(() => of(new LogoutComplete()))
           ),
       ),
     );    

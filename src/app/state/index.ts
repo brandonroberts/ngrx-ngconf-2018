@@ -5,9 +5,9 @@ import {
   createSelector,
   MetaReducer,
 } from '@ngrx/store';
-import { environment } from '../../../environments/environment';
-import * as fromAuth from './auth/auth.reducer';
-import * as fromLoginPage from './login-page/login-page.reducer';
+import { environment } from '../../environments/environment';
+import * as fromAuth from './auth.reducer';
+import * as fromLoginPage from './login-page.reducer';
 
 export interface State {
   auth: fromAuth.State;
@@ -28,6 +28,7 @@ export const selectAuthUser = createSelector(
   selectAuthState,
   fromAuth.selectUser,
 );
+export const selectIsLoggedIn = createSelector(selectAuthUser, user => !!user);
 
 export const selectLoginPageState = createFeatureSelector<fromLoginPage.State>(
   'loginPage',

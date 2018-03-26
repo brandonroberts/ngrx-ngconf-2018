@@ -3,7 +3,9 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([
+      { path: '', pathMatch: 'full', redirectTo: '/home' }
+    ]),
   ],
   exports: [
     RouterModule

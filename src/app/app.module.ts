@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from '@app/shared/state';
+import { reducers, metaReducers } from '@app/state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
@@ -21,11 +21,10 @@ import { EffectsModule } from '@ngrx/effects';
     MatSidenavModule,
     MatToolbarModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    !environment.production
-      ? StoreDevtoolsModule.instrument({
-          name: 'NgRx Authentication',
-        })
-      : [],
+    StoreDevtoolsModule.instrument({
+      name: 'NgRx Authentication',
+      logOnly: environment.production,
+    }),
     AuthModule,
     EffectsModule.forRoot([]),
   ],

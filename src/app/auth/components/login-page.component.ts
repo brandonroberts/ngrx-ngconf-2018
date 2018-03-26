@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as fromStore from '@app/shared/state';
+import * as fromStore from '@app/state';
 import { Login } from '@app/auth/actions/auth.actions';
 import { Authenticate } from '../models/authentication.model';
 

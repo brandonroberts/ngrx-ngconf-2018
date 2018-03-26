@@ -1,25 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule, MatButtonModule, MatCardModule } from '@angular/material';
+import { MatInputModule, MatButtonModule, MatCardModule, MatDialogModule } from '@angular/material';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthService } from './services/auth.service';
 import { AuthEffects } from './effects/auth.effects';
 import { LoginPageComponent } from './components/login-page.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginFormComponent } from './components/login-form.component';
+import { LogoutPromptComponent } from './components/logout-prompt.component';
 
 @NgModule({
   imports: [
     CommonModule,
     AuthRoutingModule,
-    ReactiveFormsModule,
-    MatInputModule,
     MatButtonModule,
     MatCardModule,
+    MatDialogModule,
+    MatInputModule,
+    ReactiveFormsModule,
     EffectsModule.forFeature([AuthEffects])
   ],
-  declarations: [LoginPageComponent, LoginFormComponent],
-  providers: [AuthService]
+  declarations: [LoginPageComponent, LoginFormComponent, LogoutPromptComponent],
+  providers: [AuthService],
+  entryComponents: [LogoutPromptComponent]
 })
 export class AuthModule { }

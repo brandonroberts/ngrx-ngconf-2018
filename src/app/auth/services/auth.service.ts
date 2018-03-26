@@ -4,13 +4,23 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Authenticate } from '../models/authentication.model';
 
+const mockUser = { name: 'Brandon', email: 'brandon@ngrx.io' }
+
 @Injectable()
 export class AuthService {
+  private loggedIn = false;
+
   login(auth: Authenticate): Observable<UserModel> {
-    return of({ name: 'Brandon', email: 'brandon@ngrx.io' });
+    this.loggedIn = true;
+    return of(mockUser);
   }
 
   logout() {
+    this.loggedIn = false;
     return of(true);
+  }
+
+  check() {
+    return of(this.loggedIn ? mockUser : null);
   }
 }

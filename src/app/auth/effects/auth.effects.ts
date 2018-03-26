@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
-import { map, exhaustMap, catchError } from 'rxjs/operators';
+import { map, exhaustMap, catchError, tap, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import {
   AuthActions,
@@ -9,9 +9,14 @@ import {
   LoginSuccess,
   LoginFailure,
   Logout,
+  LogoutConfirmed,
   LogoutComplete,
 } from '../actions/auth.actions';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { LogoutPromptComponent } from '@app/auth/components/logout-prompt.component';
+import { empty } from 'rxjs/observable/empty';
 
 @Injectable()
 export class AuthEffects {
@@ -25,24 +30,54 @@ export class AuthEffects {
           .login(auth)
           .pipe(
             map(user => new LoginSuccess({ user })),
-            catchError(error => of(new LoginFailure(error)))
+            catchError(error => of(new LoginFailure(error))),
+          ),
+      ),
+    );
+
+  @Effect({ dispatch: false })
+  loginRedirect$ = this.actions$
+    .ofType<LoginSuccess>(AuthActionTypes.LoginSuccess)
+    .pipe(tap(() => this.router.navigate(['/home'])));
+
+  @Effect()
+  logoutConfirmation$ = this.actions$
+    .ofType<Logout>(AuthActionTypes.Logout)
+    .pipe(
+      exhaustMap(() =>
+        this.dialogService
+          .open(LogoutPromptComponent)
+          .afterClosed()
+          .pipe(
+            mergeMap(confirmed => {
+              if (confirmed) {
+                return of(new LogoutConfirmed());
+              } else {
+                return empty();
+              }
+            }),
           ),
       ),
     );
 
   @Effect({ dispatch: false })
   logout$ = this.actions$
-    .ofType<Logout>(AuthActionTypes.Logout)
+    .ofType<LogoutConfirmed>(AuthActionTypes.LogoutConfirmed)
     .pipe(
       exhaustMap(auth =>
         this.authService
           .logout()
           .pipe(
             map(() => new LogoutComplete()),
-            catchError(() => of(new LogoutComplete()))
+            catchError(() => of(new LogoutComplete())),
           ),
       ),
-    );    
+    );
 
-  constructor(private actions$: Actions, private authService: AuthService) {}
+  constructor(
+    private actions$: Actions,
+    private authService: AuthService,
+    private router: Router,
+    private dialogService: MatDialog,
+  ) {}
 }

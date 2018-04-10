@@ -3,12 +3,12 @@ import { Authenticate } from '../models/authentication.model';
 import { UserModel } from '../models/user.model';
 
 export enum AuthActionTypes {
-  Login = '[Auth] Login',
-  LoginSuccess = '[Auth] Login Success',
-  LoginFailure = '[Auth] Login Failure',
-  Logout = '[Auth] Logout',
+  Login = '[Login Page] Login',
+  LoginSuccess = '[Auth API] Login Success',
+  LoginFailure = '[Auth API] Login Failure',
+  Logout = '[Auth] Confirm Logout',
   LogoutConfirmed = '[Auth] Logout Confirmed',
-  LogoutComplete = '[Auth] Logout Complete',
+  LogoutComplete = '[Auth API] Logout Complete',
 }
 
 export class Login implements Action {

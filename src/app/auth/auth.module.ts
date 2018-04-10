@@ -9,6 +9,7 @@ import { LoginPageComponent } from './components/login-page.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginFormComponent } from './components/login-form.component';
 import { LogoutPromptComponent } from './components/logout-prompt.component';
+import { UserHomeComponent } from '@app/auth/components/user-home.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import { LogoutPromptComponent } from './components/logout-prompt.component';
     ReactiveFormsModule,
     EffectsModule.forFeature([AuthEffects])
   ],
-  declarations: [LoginPageComponent, LoginFormComponent, LogoutPromptComponent],
+  declarations: [LoginPageComponent, LoginFormComponent, LogoutPromptComponent, UserHomeComponent],
   providers: [AuthService],
   entryComponents: [LogoutPromptComponent]
 })

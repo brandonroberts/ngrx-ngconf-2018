@@ -15,7 +15,7 @@ export function reducer(state = initialState, action: AuthActions): State {
     case AuthActionTypes.LoginSuccess:
       return { ...state, user: action.payload.user };
 
-    case AuthActionTypes.Logout:
+    case AuthActionTypes.LogoutConfirmed:
       return initialState;
 
     default:

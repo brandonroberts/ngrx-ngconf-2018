@@ -68,6 +68,7 @@ export class AuthEffects {
         this.authService
           .logout()
           .pipe(
+            tap(() => this.router.navigate(['/login'])),
             map(() => new LogoutComplete()),
             catchError(() => of(new LogoutComplete())),
           ),

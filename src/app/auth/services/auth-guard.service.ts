@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
-import { map, take, mergeMap } from 'rxjs/operators';
+import { CanActivate, Router } from '@angular/router';
+import { map, take, mergeMap, catchError } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import * as fromStore from '@app/state';
 import { Store } from '@ngrx/store';
@@ -11,25 +11,37 @@ export class AuthGuardService implements CanActivate {
   constructor(
     private authService: AuthService,
     private store: Store<fromStore.State>,
+    private router: Router
   ) {}
 
   canActivate() {
-    return this.checkStoreAuth().pipe(
-      mergeMap(authenticated => {
-        if (authenticated) {
+    return this.checkStoreAuthentication().pipe(
+      mergeMap(storeAuth => {
+        if (storeAuth) {
           return of(true);
         }
 
         return this.checkApiAuthentication();
       }),
+      map(storeOrApiAuth => {
+        if (!storeOrApiAuth) {
+          this.router.navigate(['/login']);
+          return false;
+        }
+
+        return true;
+      }),
     );
   }
 
-  checkStoreAuth() {
+  checkStoreAuthentication() {
     return this.store.select(fromStore.selectIsLoggedIn).pipe(take(1));
   }
 
   checkApiAuthentication() {
-    return this.authService.check().pipe(map(user => !!user));
+    return this.authService.check().pipe(
+      map(user => !!user),
+      catchError(() => of(false))
+    );
   }
 }

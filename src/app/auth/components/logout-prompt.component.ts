@@ -14,7 +14,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
       <button mat-button (click)="cancel()">
         No
       </button>
-      <button mat-button color="primary" (click)="confirm()">
+      <button mat-button (click)="confirm()">
         Yes
       </button>
     </mat-dialog-actions>

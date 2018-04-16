@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserModel } from '@app/auth/models/user.model';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable, of } from 'rxjs';
 import { Authenticate } from '../models/authentication.model';
 
 const mockUser = { name: 'Brandon', email: 'brandon@ngrx.io' }

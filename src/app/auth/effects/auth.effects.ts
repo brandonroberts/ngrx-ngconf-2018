@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { map, exhaustMap, catchError, tap, mergeMap } from 'rxjs/operators';
-import { of } from 'rxjs/observable/of';
+import { of, empty } from 'rxjs';
 import {
   AuthActions,
   AuthActionTypes,
@@ -16,7 +16,6 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { LogoutPromptComponent } from '@app/auth/components/logout-prompt.component';
-import { empty } from 'rxjs/observable/empty';
 
 @Injectable()
 export class AuthEffects {
@@ -49,13 +48,13 @@ export class AuthEffects {
           .open(LogoutPromptComponent)
           .afterClosed()
           .pipe(
-            mergeMap(confirmed => {
+            map(confirmed => {
               if (confirmed) {
-                return of(new LogoutConfirmed());
+                return new LogoutConfirmed();
               } else {
-                return empty();
+                return new LogoutConfirmed();
               }
-            }),
+            })
           ),
       ),
     );

@@ -11,6 +11,8 @@ import { reducers, metaReducers } from '@app/state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import { GoogleBooksService } from './services/google-books';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,17 +20,18 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
     MatSidenavModule,
     MatToolbarModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
-      name: 'NgRx Authentication',
+      name: 'NgRx 2018',
       logOnly: environment.production,
     }),
     AuthModule,
     EffectsModule.forRoot([]),
   ],
-  providers: [],
+  providers: [GoogleBooksService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

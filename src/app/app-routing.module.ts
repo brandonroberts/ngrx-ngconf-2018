@@ -5,6 +5,7 @@ import { AuthService } from '@app/auth/services/auth.service';
 @NgModule({
   imports: [
     RouterModule.forRoot([
+      { path: 'books', loadChildren: '@app/books/books.module#BooksModule' },
       { path: '', pathMatch: 'full', redirectTo: '/home' }
     ]),
   ],

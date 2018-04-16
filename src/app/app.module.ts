@@ -20,7 +20,7 @@ import { EffectsModule } from '@ngrx/effects';
     AppRoutingModule,
     MatSidenavModule,
     MatToolbarModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       name: 'NgRx Authentication',
       logOnly: environment.production,

@@ -17,15 +17,14 @@ describe('Books Reducer', () => {
 
   describe('State Changes', () => {
     it('should have an initial state', () => {
-      const result = fromBooks.reducer(undefined, {} as any);
-  
-      expect(result).toMatchSnapshot();
+
     });
   });
 
   describe('Selectors', () => {
     describe('getAllBooks', () => {
       it('should return all the books', () => {
+
       });
     });
   });

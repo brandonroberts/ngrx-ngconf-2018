@@ -4,7 +4,7 @@ import { map, take, mergeMap, catchError } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import * as fromStore from '@app/state';
 import { Store } from '@ngrx/store';
-import { of } from 'rxjs/observable/of';
+import { of } from 'rxjs';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {

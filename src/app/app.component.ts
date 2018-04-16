@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
       <mat-sidenav></mat-sidenav>
       <mat-sidenav-content>
         <mat-toolbar color="primary">
-          <span>NgRx Authentication</span>
+          <span>NgRx 2018</span>
         </mat-toolbar>
 
         <router-outlet></router-outlet>

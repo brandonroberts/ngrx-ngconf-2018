@@ -17,6 +17,7 @@
       "dom"
     ],
     "paths": {
+      "angular-testing-library": ["./app/testing/*"],
       "@app/*": ["./app/*"]
     }
   }

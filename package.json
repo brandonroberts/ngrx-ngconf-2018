@@ -41,6 +41,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/jest": "^22.2.3",
     "@types/node": "~6.0.60",
+    "angular-testing-library": "^0.0.2",
     "codelyzer": "^4.0.1",
     "jasmine-core": "~2.8.0",
     "jasmine-marbles": "^0.3.1",

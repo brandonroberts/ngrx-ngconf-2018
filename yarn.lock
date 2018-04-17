@@ -424,6 +424,10 @@ amqplib@^0.5.2:
     readable-stream "1.x >=1.1.9"
     safe-buffer "^5.0.1"
 
+angular-testing-library@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/angular-testing-library/-/angular-testing-library-0.0.2.tgz#588edd381d9f4015b8bbbd8051991c6c618c655e"
+
 ansi-escapes@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-3.1.0.tgz#f73207bb81207d75fd6c83f125af26eea378ca30"

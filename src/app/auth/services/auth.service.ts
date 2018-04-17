@@ -5,7 +5,9 @@ import { Authenticate } from '../models/authentication.model';
 
 const mockUser = { name: 'Brandon', email: 'brandon@ngrx.io' }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
   private loggedIn = false;
 

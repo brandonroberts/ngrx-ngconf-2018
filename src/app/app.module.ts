@@ -11,7 +11,6 @@ import { reducers, metaReducers } from '@app/state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { GoogleBooksService } from './services/google-books';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -32,7 +31,6 @@ import { HttpClientModule } from '@angular/common/http';
     AuthModule,
     EffectsModule.forRoot([]),
   ],
-  providers: [GoogleBooksService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule, MatButtonModule, MatCardModule, MatDialogModule } from '@angular/material';
+import {
+  MatInputModule,
+  MatButtonModule,
+  MatCardModule,
+  MatDialogModule,
+} from '@angular/material';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthService } from './services/auth.service';
 import { AuthEffects } from './effects/auth.effects';
@@ -20,10 +25,14 @@ import { UserHomeComponent } from '@app/auth/components/user-home.component';
     MatDialogModule,
     MatInputModule,
     ReactiveFormsModule,
-    EffectsModule.forFeature([AuthEffects])
+    EffectsModule.forFeature([AuthEffects]),
   ],
-  declarations: [LoginPageComponent, LoginFormComponent, LogoutPromptComponent, UserHomeComponent],
-  providers: [AuthService],
-  entryComponents: [LogoutPromptComponent]
+  declarations: [
+    LoginPageComponent,
+    LoginFormComponent,
+    LogoutPromptComponent,
+    UserHomeComponent,
+  ],
+  entryComponents: [LogoutPromptComponent],
 })
-export class AuthModule { }
+export class AuthModule {}

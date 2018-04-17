@@ -10,6 +10,7 @@ import { MaterialModule } from '../material';
 import { reducers } from './reducers';
 import { BooksPageEffects } from './effects/books-page';
 import { BooksPageComponent } from './components/books-page';
+import { AuthGuardService } from '@app/auth/services/auth-guard.service';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { BooksPageComponent } from './components/books-page';
     MaterialModule,
     ComponentsModule,
     RouterModule.forChild([
-      { path: '', component: BooksPageComponent },
+      { path: '', component: BooksPageComponent, canActivate: [AuthGuardService] },
     ]),
     StoreModule.forFeature('books', reducers),
     EffectsModule.forFeature([BooksPageEffects]),

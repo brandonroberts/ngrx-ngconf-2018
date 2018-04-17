@@ -11,16 +11,10 @@ export const initialState: State = {
   error: null
 };
 
-export function update<T>(state: T, ...changes: Partial<T>[]): T {
-  return changes.reduce((currentState: any, stateChange: any) => ({
-    ...currentState, ...stateChange
-  }), state);
-}
-
 export function reducer(state = initialState, action: AuthActions): State {
   switch (action.type) {
     case AuthActionTypes.Login: {
-      return update(state, { pending: true });
+      return { ...state, pending: true };
     }
 
     case AuthActionTypes.LoginSuccess: {
@@ -28,7 +22,7 @@ export function reducer(state = initialState, action: AuthActions): State {
     }
 
     case AuthActionTypes.LoginFailure: {
-      return update(state, { error: action.payload });
+      return { ...state, error: action.payload, pending: false };
     }
 
     default: {

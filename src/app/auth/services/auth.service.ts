@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserModel } from '@app/auth/models/user.model';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { Authenticate } from '../models/authentication.model';
 
 const mockUser = { name: 'Brandon', email: 'brandon@ngrx.io' }
@@ -10,6 +10,10 @@ export class AuthService {
   private loggedIn = false;
 
   login(auth: Authenticate): Observable<UserModel> {
+    if (auth.username !== 'ngconf') {
+      return throwError('Invalid username or password');
+    }
+
     this.loggedIn = true;
     return of(mockUser);
   }

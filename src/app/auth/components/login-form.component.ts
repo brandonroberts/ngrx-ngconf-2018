@@ -12,8 +12,8 @@ import { Authenticate } from '../models/authentication.model';
       <mat-card-content>
         <form [formGroup]="loginForm" (ngSubmit)="submit()">
           <mat-form-field>
-            <input matInput type="text" formControlName="username" placeholder="Email Address">
-            <mat-error *ngIf="loginForm.hasError('required', ['username'])">Email Address is required</mat-error>
+            <input matInput type="text" formControlName="username" placeholder="Username">
+            <mat-error *ngIf="loginForm.hasError('required', ['username'])">Username is required</mat-error>
           </mat-form-field>
 
           <mat-form-field>
@@ -56,7 +56,7 @@ import { Authenticate } from '../models/authentication.model';
 
     .loginError {
       padding: 16px;
-      width: 300px;
+      width: 100%;
       color: white;
       background-color: red;
     }

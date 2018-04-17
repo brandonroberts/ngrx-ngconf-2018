@@ -1,7 +1,7 @@
 import * as fromBooks from './books';
-import { Load } from '../actions/books-page';
+import { Load } from '../actions/books-page.actions';
 import { Book, generateMockBook } from '../models/book';
-import { LoadSuccess } from '../actions/books-api';
+import { LoadSuccess } from '../actions/books-api.actions';
 
 describe('Books Reducer', () => {
   const book1 = generateMockBook();

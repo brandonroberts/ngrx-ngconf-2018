@@ -3,15 +3,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { combineReducers, Store, StoreModule } from '@ngrx/store';
 import { MatCardModule, MatInputModule } from '@angular/material';
 
-import { BooksPageComponent } from './books-page';
-import { BookPreviewListComponent } from '../components/book-preview-list';
-import { BookPreviewComponent } from '../components/book-preview';
-import { BookAuthorsComponent } from '../components/book-authors';
+import { BooksPageComponent } from './books-page.component';
+import { BookPreviewListComponent } from '../components/book-preview-list.component';
+import { BookPreviewComponent } from '../components/book-preview.component';
+import { BookAuthorsComponent } from '../components/book-authors.component';
 
 import { EllipsisPipe } from '../../shared/pipes/ellipsis';
 import { AddCommasPipe } from '../../shared/pipes/add-commas';
 
-import * as BooksPageActions from '../actions/books-page';
+import * as BooksPageActions from '../actions/books-page.actions';
 import * as fromBooks from '../reducers';
 
 describe('Collection Page', () => {

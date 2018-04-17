@@ -1,7 +1,7 @@
 import { createSelector } from '@ngrx/store';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Book } from '../models/book';
-import { BooksApiActionTypes, BooksApiActionsUnion } from '../actions/books-api';
+import { BooksApiActionTypes, BooksApiActionsUnion } from '../actions/books-api.actions';
 
 export interface State extends EntityState<Book> {}
 

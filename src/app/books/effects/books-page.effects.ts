@@ -6,12 +6,12 @@ import { catchError, map, exhaustMap } from 'rxjs/operators';
 
 import {
   BooksPageActionTypes,
-} from './../actions/books-page';
+} from './../actions/books-page.actions';
 import {
   BooksApiActionTypes,
   LoadSuccess,
   LoadFail
-} from './../actions/books-api';
+} from './../actions/books-api.actions';
 import { GoogleBooksService } from '@app/services/google-books';
 
 @Injectable()

@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 import { cold } from 'jasmine-marbles';
 import { GoogleBooksService } from './google-books';
-import { provideMagicalMock, Mock } from '@app/testing';
+import { provideMagicalMock, Mock } from 'angular-testing-library';
 
 describe('Service: GoogleBooks', () => {
   let service: GoogleBooksService;

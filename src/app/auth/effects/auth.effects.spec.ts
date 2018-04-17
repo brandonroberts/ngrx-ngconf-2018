@@ -35,6 +35,12 @@ describe('Auth Effects', () => {
   });
 
   it('should redirect the user after successful login', () => {
+    const user: any = { name: 'Auth User' };
+    const action = new LoginSuccess({ user });
 
+    actions$ = of(action);
+    effects.loginRedirect$.subscribe();
+
+    expect(router.navigate).toHaveBeenCalledWith(['/books']);
   });
 });

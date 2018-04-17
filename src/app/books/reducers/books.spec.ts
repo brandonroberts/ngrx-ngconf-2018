@@ -6,7 +6,6 @@ import { LoadSuccess } from '../actions/books-api.actions';
 describe('Books Reducer', () => {
   const book1 = generateMockBook();
   const book2 = { ...book1, id: '222' };
-  const book3 = { ...book1, id: '333' };
   const initialState: fromBooks.State = {
     ids: [book1.id, book2.id],
     entities: {
@@ -17,18 +16,27 @@ describe('Books Reducer', () => {
 
   describe('State Changes', () => {
     it('should have an initial state', () => {
+      const state = fromBooks.reducer(initialState, { type: '@@init' } as any);
 
+      expect(state).toBe(initialState);
     });
 
     it('should load books on success', () => {
+      const init = { type: '@@init' } as any;
+      const load = new LoadSuccess([ book1, book2 ]);
 
+      const state = [init, load].reduce(fromBooks.reducer, initialState);
+
+      expect(state).toMatchSnapshot();
     });    
   });
 
   describe('Selectors', () => {
     describe('getAllBooks', () => {
       it('should return all the books', () => {
+        const result = fromBooks.getAllBooks(initialState);
 
+        expect(result.length).toBe(2);
       });
     });
   });

@@ -64,6 +64,6 @@
     "moduleNameMapper": {
       "^@app/state(.*)$": "<rootDir>/src/app/state/$1",
       "^@app/(.*)$": "<rootDir>/src/app/$1"
-    }
+    }    
   }
 }

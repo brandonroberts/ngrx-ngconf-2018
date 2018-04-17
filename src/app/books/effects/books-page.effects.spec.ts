@@ -7,7 +7,7 @@ import { provideMagicalMock, Mock } from 'angular-testing-library';
 import { GoogleBooksService } from '@app/services/google-books';
 import { Observable, of } from 'rxjs';
 import { Load } from '@app/books/actions/books-page.actions';
-import { LoadSuccess } from '@app/books/actions/books-api.actions';
+import { LoadSuccess, LoadFail } from '@app/books/actions/books-api.actions';
 import { Book } from '@app/books/models/book';
 
 describe('Books Page Effects', () => {
@@ -42,6 +42,15 @@ describe('Books Page Effects', () => {
   });
 
   it('should call the search api and return the search results', () => {
+    const action = new Load();
+    const result = new LoadSuccess(books.items as Book[]);
 
+    actions$ = of(action);
+    const response = cold('-a|', { a: books.items });
+    const expected = cold('-b|', { b: result });
+
+    googleBooksService.searchBooks.and.returnValue(response);
+
+    expect(effects.loadCollection$).toBeObservable(expected);
   });
 });

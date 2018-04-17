@@ -7,6 +7,7 @@ export enum AuthActionTypes {
   LoginSuccess = '[Auth API] Login Success',
   LoginFailure = '[Auth API] Login Failure',
   Logout = '[Auth] Confirm Logout',
+  LogoutCancelled = '[Auth] Logout Cancelled',
   LogoutConfirmed = '[Auth] Logout Confirmed',
   LogoutComplete = '[Auth API] Logout Complete',
 }
@@ -37,6 +38,10 @@ export class LogoutConfirmed implements Action {
   readonly type = AuthActionTypes.LogoutConfirmed;
 }
 
+export class LogoutCancelled implements Action {
+  readonly type = AuthActionTypes.LogoutCancelled;
+}
+
 export class LogoutComplete implements Action {
   readonly type = AuthActionTypes.LogoutComplete;
 }
@@ -46,5 +51,6 @@ export type AuthActions =
   | LoginSuccess
   | LoginFailure
   | Logout
+  | LogoutCancelled
   | LogoutConfirmed
   | LogoutComplete;

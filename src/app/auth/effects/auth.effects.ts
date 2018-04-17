@@ -11,6 +11,7 @@ import {
   Logout,
   LogoutConfirmed,
   LogoutComplete,
+  LogoutCancelled,
 } from '../actions/auth.actions';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
@@ -52,7 +53,7 @@ export class AuthEffects {
               if (confirmed) {
                 return new LogoutConfirmed();
               } else {
-                return new LogoutConfirmed();
+                return new LogoutCancelled();
               }
             })
           ),

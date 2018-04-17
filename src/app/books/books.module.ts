@@ -8,8 +8,8 @@ import { ComponentsModule } from './components';
 import { MaterialModule } from '../material';
 
 import { reducers } from './reducers';
-import { BooksPageEffects } from './effects/books-page';
-import { BooksPageComponent } from './components/books-page';
+import { BooksPageEffects } from './effects/books-page.effects';
+import { BooksPageComponent } from './components/books-page.component';
 import { AuthGuardService } from '@app/auth/services/auth-guard.service';
 
 @NgModule({

@@ -14,7 +14,7 @@ import { AddCommasPipe } from '../../shared/pipes/add-commas';
 import * as BooksPageActions from '../actions/books-page.actions';
 import * as fromBooks from '../reducers';
 
-describe('Collection Page', () => {
+describe('Books Page', () => {
   let fixture: ComponentFixture<BooksPageComponent>;
   let store: Store<fromBooks.State>;
   let instance: BooksPageComponent;

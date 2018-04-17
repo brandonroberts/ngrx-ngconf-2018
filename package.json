@@ -60,6 +60,10 @@
   },
   "jest": {
     "preset": "jest-preset-angular",
-    "setupTestFrameworkScriptFile": "<rootDir>/src/setupJest.ts"
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupJest.ts",
+    "moduleNameMapper": {
+      "^@app/state(.*)$": "<rootDir>/src/app/state/$1",
+      "^@app/(.*)$": "<rootDir>/src/app/$1"
+    }
   }
 }

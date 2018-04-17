@@ -19,6 +19,10 @@ describe('Books Reducer', () => {
     it('should have an initial state', () => {
 
     });
+
+    it('should load books on success', () => {
+
+    });    
   });
 
   describe('Selectors', () => {

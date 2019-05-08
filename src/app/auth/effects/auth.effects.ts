@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { map, exhaustMap, catchError, tap, mergeMap } from 'rxjs/operators';
 import { of, empty } from 'rxjs';
 import {
@@ -21,9 +21,8 @@ import { LogoutPromptComponent } from '@app/auth/components/logout-prompt.compon
 @Injectable()
 export class AuthEffects {
   @Effect()
-  login$ = this.actions$
-    .ofType<Login>(AuthActionTypes.Login)
-    .pipe(
+  login$ = this.actions$.pipe(
+    ofType<Login>(AuthActionTypes.Login),
       map(action => action.payload),
       exhaustMap(auth =>
         this.authService
@@ -36,14 +35,13 @@ export class AuthEffects {
     );
 
   @Effect({ dispatch: false })
-  loginRedirect$ = this.actions$
-    .ofType<LoginSuccess>(AuthActionTypes.LoginSuccess)
-    .pipe(tap(() => this.router.navigate(['/books'])));
+  loginRedirect$ = this.actions$.pipe(
+    ofType<LoginSuccess>(AuthActionTypes.LoginSuccess),
+    tap(() => this.router.navigate(['/books'])));
 
   @Effect()
-  logoutConfirmation$ = this.actions$
-    .ofType<Logout>(AuthActionTypes.Logout)
-    .pipe(
+  logoutConfirmation$ = this.actions$.pipe(
+    ofType<Logout>(AuthActionTypes.Logout),
       exhaustMap(() =>
         this.dialogService
           .open(LogoutPromptComponent)
@@ -61,10 +59,9 @@ export class AuthEffects {
     );
 
   @Effect({ dispatch: false })
-  logout$ = this.actions$
-    .ofType<LogoutConfirmed>(AuthActionTypes.LogoutConfirmed)
-    .pipe(
-      exhaustMap(auth =>
+  logout$ = this.actions$.pipe(
+    ofType<LogoutConfirmed>(AuthActionTypes.LogoutConfirmed),
+    exhaustMap(auth =>
         this.authService
           .logout()
           .pipe(
